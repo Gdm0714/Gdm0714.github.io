@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고동민 - 백엔드 개발자 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        accent: '#10B981'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceSubtle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .skill-progress {
+            transition: width 1s ease-in-out;
+        }
+
+        .parallax {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        /* 페이지 레이아웃 개선 */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* 모바일 메뉴 스타일 */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            text-decoration: none;
+            color: #374151;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f9fafb;
+            color: #3b82f6;
+        }
+
+        /* 스크롤 부드럽게 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 로딩 상태 */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .loaded .loading {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease-out;
+        }
+
+        /* 이미지 슬라이더 스타일 */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 256px;
+        }
+
+        .slider-container {
+            width: 300%;
+            height: 100%;
+        }
+
+        .slider-container img {
+            width: 33.333%;
+        }
+
+        .slider-prev, .slider-next {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-slider:hover .slider-prev,
+        .image-slider:hover .slider-next {
+            opacity: 1;
+        }
+
+        .slider-dots button.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <div class="text-2xl font-bold text-primary">고동민</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-6xl mx-auto px-4 py-20 relative z-10">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    안녕하세요!<br>
+                    <span class="text-accent">백엔드 개발자</span><br>
+                    고동민입니다.
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl opacity-90">
+                    공유의 가치를 믿으며, 성실하고 책임감 있는 개발을 추구합니다.<br>
+                    복잡한 문제를 해결하고 성능을 최적화하는 것을 즐깁니다.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects"
+                       class="bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:transform hover:scale-105">
+                        프로젝트 보기
+                    </a>
+                    <a href="#contact"
+                       class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all">
+                        연락하기
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <p class="text-gray-600 text-lg">저에 대해 소개합니다</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold mb-6">경력 및 교육</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-primary pl-6">
+                            <h4 class="text-lg font-semibold text-primary">한국전자통신연구원(ETRI)</h4>
+                            <p class="text-gray-600">사이버브레인연구실 | 연구연수생</p>
+                            <p class="text-sm text-gray-500">2023.07 ~ 2023.08</p>
+                            <p class="mt-2">자율·협업형 데이터 허브기술 개발</p>
+                        </div>
+                        <div class="border-l-4 border-accent pl-6">
+                            <h4 class="text-lg font-semibold text-accent">네이버 부스트캠프</h4>
+                            <p class="text-gray-600">웹, 모바일 9기</p>
+                            <p class="text-sm text-gray-500">2024.06 ~ 2025.01</p>
+                            <p class="mt-2">페어 프로그래밍, 코드 리뷰를 통한 협업 스킬 강화</p>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-6">
+                            <h4 class="text-lg font-semibold text-purple-500">인제대학교</h4>
+                            <p class="text-gray-600">컴퓨터공학부 | 4.1/4.5</p>
+                            <p class="text-sm text-gray-500">2019.03 ~ 2025.02 (졸업예정)</p>
+                            <p class="mt-2">성적장학금 2회 수여</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold mb-6">핵심 가치</h3>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-primary mb-2">🤝 공유의 가치</h4>
+                            <p class="text-gray-700">새롭게 알게 된 지식이나 문제 해결 과정을 블로그 포스팅으로 공유합니다.</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-accent mb-2">💪 책임감</h4>
+                            <p class="text-gray-700">맡은 작업을 성실하게 수행하는 개발자입니다.</p>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-purple-500 mb-2">🚀 성능 최적화</h4>
+                            <p class="text-gray-700">복잡한 문제를 해결하고 시스템 성능을 개선하는 것을 즐깁니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer - 페이지 맨 아래 고정 -->
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">기술 스택</h2>
+            <p class="text-gray-600 text-lg">주요 기술들과 경험 수준</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Backend -->
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold mb-6 text-center text-primary">Backend</h3>
+                <div class="space-y-4">
+                    <div class="tech-icon flex items-center p-4 bg-red-50 rounded-lg">
+                        <div class="w-8 h-8 bg-red-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">Java & Spring Boot</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-red-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-green-50 rounded-lg">
+                        <div class="w-8 h-8 bg-green-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">Node.js & NestJS</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-blue-50 rounded-lg">
+                        <div class="w-8 h-8 bg-blue-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">TypeScript</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-blue-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Database -->
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold mb-6 text-center text-accent">Database</h3>
+                <div class="space-y-4">
+                    <div class="tech-icon flex items-center p-4 bg-blue-50 rounded-lg">
+                        <div class="w-8 h-8 bg-blue-600 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">PostgreSQL</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-orange-50 rounded-lg">
+                        <div class="w-8 h-8 bg-orange-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">MySQL</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-orange-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-red-50 rounded-lg">
+                        <div class="w-8 h-8 bg-red-600 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">MyBatis</span>
+                                <span class="text-sm text-gray-500">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-red-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps & Tools -->
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold mb-6 text-center text-purple-500">DevOps & Tools</h3>
+                <div class="space-y-4">
+                    <div class="tech-icon flex items-center p-4 bg-gray-50 rounded-lg">
+                        <div class="w-8 h-8 bg-gray-800 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">Git & GitHub</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-gray-800 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-blue-50 rounded-lg">
+                        <div class="w-8 h-8 bg-blue-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">Docker</span>
+                                <span class="text-sm text-gray-500">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-blue-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icon flex items-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="w-8 h-8 bg-yellow-500 rounded mr-4"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-semibold">AWS</span>
+                                <span class="text-sm text-gray-500">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-yellow-500 h-2 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">주요 프로젝트</h2>
+            <p class="text-gray-600 text-lg">실제 문제를 해결한 프로젝트들을 소개합니다</p>
+        </div>
+
+        <div class="space-y-16">
+            <!-- Cloud Canvas Project -->
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-blue-100">
+                <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
+                    <!-- 이미지 슬라이더 영역 -->
+                    <div class="flex-1 flex items-center justify-center">
+                        <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-blue-100 to-indigo-100 p-2 w-full max-w-xl">
+                            <div class="slider-container flex transition-transform duration-500 ease-in-out">
+                                <img src="public/images/projects/cloud-canvas-1.png" alt="Cloud Canvas 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+1'">
+                                <img src="public/images/projects/cloud-canvas-2.png" alt="Cloud Canvas 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+2'">
+                                <img src="public/images/projects/cloud-canvas-3.png" alt="Cloud Canvas 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+3'">
+                            </div>
+                            <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 텍스트/설명 영역 (통일 구조) -->
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-3">
+                                <h3 class="text-4xl font-extrabold text-primary mr-4">Cloud Canvas</h3>
+                                <span class="bg-green-100 text-green-800 px-4 py-1 rounded-full text-base font-semibold">진행중</span>
+                            </div>
+                            <p class="text-gray-700 mb-6 text-lg font-medium">
+                                클라우드 인프라를 그래픽 인터페이스로 설계하고 Terraform 코드로 자동 변환하는 혁신적인 도구
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">NestJS</span>
+                                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
+                            </div>
+                            <ul class="space-y-2 mb-8">
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>Strategy & Factory 패턴으로 코드 수정량 40-70% 감소</li>
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>캐싱 메커니즘으로 성능 70% 향상 (10ms → 3ms)</li>
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>메모리 사용량 50% 감소, 캐시 히트율 85% 달성</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-4 mb-6">
+                            <a href="https://github.com/boostcampwm-2024/web37-cloud-canvas" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
+                            <a href="https://coding-study00.tistory.com/" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
+                        </div>
+                        <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
+                            <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-blue-600">70%</div>
+                                    <div class="text-sm text-gray-600">성능 향상</div>
+                                </div>
+                                <div class="text-center p-4 bg-green-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-green-600">85%</div>
+                                    <div class="text-sm text-gray-600">캐시 히트율</div>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-purple-600">50%</div>
+                                    <div class="text-sm text-gray-600">메모리 절약</div>
+                                </div>
+                                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-orange-600">4인</div>
+                                    <div class="text-sm text-gray-600">팀 개발</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ETRI 데이터 하베스팅 프로젝트 -->
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-purple-100">
+                <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
+                    <!-- 이미지 슬라이더 영역 -->
+                    <div class="flex-1 flex items-center justify-center">
+                        <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-indigo-100 to-purple-100 p-2 w-full max-w-xl">
+                            <div class="slider-container flex transition-transform duration-500 ease-in-out">
+                                <img src="public/images/projects/harvesting-1.png" alt="데이터 하베스팅 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-purple-200" onerror="this.src='https://via.placeholder.com/800x400?text=Harvesting+1'">
+                                <img src="public/images/projects/harvesting-2.png" alt="데이터 하베스팅 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-purple-200" onerror="this.src='https://via.placeholder.com/800x400?text=Harvesting+2'">
+                            </div>
+                            <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 텍스트/설명 영역 (통일 구조) -->
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-3">
+                                <h3 class="text-4xl font-extrabold text-purple-600 mr-4">데이터 하베스팅 시스템</h3>
+                                <span class="bg-purple-100 text-purple-800 px-4 py-1 rounded-full text-base font-semibold">완료</span>
+                            </div>
+                            <p class="text-gray-700 mb-6 text-lg font-medium">자율·협업형 데이터 허브기술 개발 - 다양한 소스로부터 데이터를 자동으로 수집, 추출하고 저장하는 시스템</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Java 17</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot 3</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">PostgreSQL 16</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">MyBatis 2.3.0</span>
+                            </div>
+                            <ul class="space-y-2 mb-8">
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>데이터 수집 소스 관리 시스템 구현</li>
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>하베스팅 작업 생성, 실행, 모니터링 기능 개발</li>
+                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>다단계 승인 프로세스 및 작업 충돌 방지 로직 설계</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-4 mb-6">
+                            <a href="#" class="bg-purple-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-purple-600 transition-colors">ETRI 소개</a>
+                        </div>
+                        <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
+                            <h4 class="font-bold text-xl mb-4 text-center">주요 성과</h4>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="text-center p-4 bg-indigo-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-indigo-600">100%</div>
+                                    <div class="text-sm text-gray-600">작업 충돌 방지</div>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-purple-600">5단계</div>
+                                    <div class="text-sm text-gray-600">승인 프로세스</div>
+                                </div>
+                                <div class="text-center p-4 bg-green-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-green-600">24/7</div>
+                                    <div class="text-sm text-gray-600">자동화 수집</div>
+                                </div>
+                                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-orange-600">100%</div>
+                                    <div class="text-sm text-gray-600">데이터 정합성</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 인제 레시피 Project -->
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-orange-100">
+              <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
+                <!-- 이미지 슬라이더 영역 -->
+                <div class="flex-1 flex items-center justify-center">
+                  <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-orange-100 to-red-100 p-2 w-full max-w-xl">
+                    <div class="slider-container flex transition-transform duration-500 ease-in-out">
+                      <img src="public/images/projects/injerecipe-1.png" alt="인제 레시피 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+1'">
+                      <img src="public/images/projects/injerecipe-2.png" alt="인제 레시피 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+2'">
+                      <img src="public/images/projects/injerecipe-3.png" alt="인제 레시피 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+3'">
+                    </div>
+                    <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg>
+                    </button>
+                    <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                    <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                    </div>
+                  </div>
+                </div>
+                <!-- 텍스트/설명 영역 (통일 구조) -->
+                <div class="flex-1 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-3">
+                      <h3 class="text-4xl font-extrabold text-orange-500 mr-4">인제 레시피</h3>
+                      <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-base font-semibold">완료</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 text-lg font-medium">사용자가 입력한 재료를 기반으로 요리 레시피를 추천하는 앱</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Java</span>
+                      <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
+                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">PostgreSQL</span>
+                      <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
+                      <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">OAuth2</span>
+                      <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">JWT</span>
+                    </div>
+                    <ul class="space-y-2 mb-8">
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>UUID 기반 파일명으로 이미지 충돌 가능성 0%로 감소</li>
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>검색 성공률 45% → 95%로 향상</li>
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>DB 쿼리 수 80% 감소 (5회 → 1회)</li>
+                    </ul>
+                  </div>
+                  <div class="flex gap-4 mb-6">
+                    <a href="https://github.com/InjeRecipe/InjeRecipe_BackEnd" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
+                    <a href="#" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
+                  </div>
+                  <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
+                    <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
+                    <div class="grid grid-cols-2 gap-4 w-full">
+                      <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">95%</div>
+                        <div class="text-sm text-gray-600">검색 성공률</div>
+                      </div>
+                      <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">-80%</div>
+                        <div class="text-sm text-gray-600">DB 쿼리 감소</div>
+                      </div>
+                      <div class="text-center p-4 bg-purple-50 rounded-lg">
+                        <div class="text-2xl font-bold text-purple-600">0%</div>
+                        <div class="text-sm text-gray-600">이미지 충돌</div>
+                      </div>
+                      <div class="text-center p-4 bg-orange-50 rounded-lg">
+                        <div class="text-2xl font-bold text-orange-600">완료</div>
+                        <div class="text-sm text-gray-600">프로젝트 상태</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 동네왔수다 Project -->
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-emerald-100">
+              <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
+                <!-- 이미지 슬라이더 영역 -->
+                <div class="flex-1 flex items-center justify-center">
+                  <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-green-100 to-emerald-100 p-2 w-full max-w-xl">
+                    <div class="slider-container flex transition-transform duration-500 ease-in-out">
+                      <img src="public/images/projects/overtime-1.png" alt="동네왔수다 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+1'">
+                      <img src="public/images/projects/overtime-2.png" alt="동네왔수다 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+2'">
+                      <img src="public/images/projects/overtime-3.png" alt="동네왔수다 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+3'">
+                    </div>
+                    <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg>
+                    </button>
+                    <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                    <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                    </div>
+                  </div>
+                </div>
+                <!-- 텍스트/설명 영역 (통일 구조) -->
+                <div class="flex-1 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-3">
+                      <h3 class="text-4xl font-extrabold text-accent mr-4">동네왔수다</h3>
+                      <span class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-base font-semibold">1등 수상</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 text-lg font-medium">위치 기반 오디오 가이드 서비스로 사용자가 특정 장소에서 음성 콘텐츠를 들을 수 있는 플랫폼</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
+                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">JPA</span>
+                      <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
+                      <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">GitHub Actions</span>
+                    </div>
+                    <ul class="space-y-2 mb-8">
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>완전 자동화된 CI/CD 파이프라인 구축</li>
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>위치 기반 마커 및 콘텐츠 관리 시스템</li>
+                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>관리자용 콘텐츠 관리 API 개발</li>
+                    </ul>
+                  </div>
+                  <div class="flex gap-4 mb-6">
+                    <a href="https://github.com/dnd-over-time/over-time-server" class="bg-accent text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent/90 transition-colors">GitHub</a>
+                    <a href="#" class="border-2 border-accent text-accent px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent hover:text-white transition-colors">프로젝트 상세</a>
+                  </div>
+                  <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
+                    <h4 class="font-bold text-xl mb-4 text-center">DND 해커톤 성과</h4>
+                    <div class="grid grid-cols-2 gap-4 w-full">
+                      <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-2xl font-bold text-yellow-600">🏆</div>
+                        <div class="text-sm text-gray-600">1등 수상</div>
+                      </div>
+                      <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">CI/CD</div>
+                        <div class="text-sm text-gray-600">자동화</div>
+                      </div>
+                      <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">위치</div>
+                        <div class="text-sm text-gray-600">기반 서비스</div>
+                      </div>
+                      <div class="text-center p-4 bg-purple-50 rounded-lg">
+                        <div class="text-2xl font-bold text-purple-600">API</div>
+                        <div class="text-sm text-gray-600">관리자 시스템</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience & Achievements -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">경험 & 성과</h2>
+            <p class="text-gray-600 text-lg">다양한 활동과 수상 경력</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 연구실 경험 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">🔬</div>
+                <h3 class="text-xl font-bold mb-3">IL LAB</h3>
+                <p class="text-gray-600 mb-4">학부 연구실 | 학부 연구생, 랩장</p>
+                <p class="text-sm text-gray-500 mb-3">2023.01 ~ 2024.12</p>
+                <ul class="text-sm space-y-1">
+                    <li>• Java, Spring Boot 세미나 진행</li>
+                    <li>• 알고리즘 스터디 및 코드 리뷰</li>
+                    <li>• 연구생 개발 역량 향상 지원</li>
+                </ul>
+            </div>
+
+            <!-- 동아리 활동 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">👥</div>
+                <h3 class="text-xl font-bold mb-3">P&N 동아리</h3>
+                <p class="text-gray-600 mb-4">동아리원, 부팀장, 팀장</p>
+                <p class="text-sm text-gray-500 mb-3">2019.03 ~ 2024.12</p>
+                <ul class="text-sm space-y-1">
+                    <li>• 개발 세미나 및 튜터링 진행</li>
+                    <li>• Spring Boot 스터디 운영</li>
+                    <li>• 동아리원 백엔드 역량 향상</li>
+                </ul>
+            </div>
+
+            <!-- 멘토 활동 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">🏫</div>
+                <h3 class="text-xl font-bold mb-3">한국교육개발원</h3>
+                <p class="text-gray-600 mb-4">정보과학 멘토 및 TA</p>
+                <p class="text-sm text-gray-500 mb-3">2023.04 ~ 2024.11</p>
+                <ul class="text-sm space-y-1">
+                    <li>• 연 70시간 이상 프로그래밍 강의</li>
+                    <li>• Python 심화 과정 지도</li>
+                    <li>• Java 안드로이드 앱 개발 실습</li>
+                </ul>
+            </div>
+
+            <!-- 자격증 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">📜</div>
+                <h3 class="text-xl font-bold mb-3">자격증</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">정보처리기사</span>
+                        <span class="text-sm text-gray-500">2024.09</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">OPIC(영어) IM1</span>
+                        <span class="text-sm text-gray-500">2025.02</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 수상 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">🏆</div>
+                <h3 class="text-xl font-bold mb-3">수상 경력</h3>
+                <div class="space-y-3">
+                    <div class="p-3 bg-yellow-50 rounded-lg">
+                        <div class="font-semibold text-yellow-800">DND 해커톤 1등</div>
+                        <div class="text-sm text-gray-600">2025.05</div>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded-lg">
+                        <div class="font-semibold text-blue-800">성적장학금</div>
+                        <div class="text-sm text-gray-600">2회 수여</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 블로그 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="text-3xl mb-4">✍️</div>
+                <h3 class="text-xl font-bold mb-3">기술 블로그</h3>
+                <p class="text-gray-600 mb-4">개발 지식 공유</p>
+                <ul class="text-sm space-y-1">
+                    <li>• 문제 해결 과정 정리</li>
+                    <li>• 새로운 기술 학습 내용 공유</li>
+                    <li>• 프로젝트 회고 및 개선사항</li>
+                </ul>
+                <a href="https://coding-study00.tistory.com/" class="inline-flex items-center mt-3 text-primary hover:text-primary/80">
+                    티스토리 블로그 방문
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Mobile menu toggle - 완전한 구현
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+
+    // 모바일 메뉴 항목 클릭 시 메뉴 닫기
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // 메뉴 외부 클릭 시 닫기
+    document.addEventListener('click', function (event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.remove('active');
+        }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-slide-up');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('#home');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+
+    // Active navigation highlighting
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('text-primary');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('text-primary');
+            }
+        });
+    });
+
+    // Progressive skill bar animation
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const width = entry.target.style.width;
+                entry.target.style.width = '0%';
+                setTimeout(() => {
+                    entry.target.style.width = width;
+                }, 300);
+            }
+        });
+    }, {threshold: 0.5});
+
+    skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+    });
+
+    // Project card hover effects
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Loading animation - 페이지 로드 완료 후 애니메이션
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+
+        // 모든 섹션에 로딩 클래스 제거
+        document.querySelectorAll('.loading').forEach((element, index) => {
+            setTimeout(() => {
+                element.classList.add('loaded');
+            }, index * 100);
+        });
+    });
+
+    // 페이지 스크롤 시 헤더 배경 변경
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.classList.add('bg-white/95');
+            nav.classList.remove('bg-white/90');
+        } else {
+            nav.classList.add('bg-white/90');
+            nav.classList.remove('bg-white/95');
+        }
+    });
+
+    // 터치 디바이스 감지 및 호버 효과 조정
+    if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+    }
+
+    // 페이지 방문 통계 (콘솔용)
+    const visitTime = new Date().toLocaleString('ko-KR');
+    localStorage.setItem('portfolio_last_visit', visitTime);
+
+    // Console easter egg - 개발자다운 터치
+    console.log(`
+        🚀 안녕하세요! 고동민의 포트폴리오에 오신 것을 환영합니다!
+
+        📧 연락처: go714n@naver.com
+        📱 전화: 010-3540-3372
+        💼 GitHub: github.com/go714n
+        📝 Blog: 티스토리 블로그
+
+        ⏰ 방문 시간: ${visitTime}
+
+        함께 일하고 싶으시다면 언제든 연락주세요! 😊
+
+        P.S. 이 포트폴리오는 반응형으로 제작되었습니다.
+        모바일에서도 확인해보세요! 📱
+        `);
+
+    // 키보드 단축키 (개발자 전용)
+    document.addEventListener('keydown', function (e) {
+        // Ctrl + Shift + D: 개발자 정보 표시
+        if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+            alert(`개발자 정보
+
+이름: 고동민
+전공: 컴퓨터공학부
+학점: 4.1/4.5
+주요 기술: Java, Spring Boot, TypeScript, NestJS
+특징: 성능 최적화를 좋아하는 백엔드 개발자
+
+이 포트폴리오는 Vanilla JS + Tailwind CSS로 제작되었습니다.`);
+        }
+    });
+
+    // 스크롤 진행률 표시 (선택사항)
+    const scrollProgress = document.createElement('div');
+    scrollProgress.className = 'fixed top-0 left-0 h-1 bg-primary z-50 transition-all duration-300';
+    scrollProgress.style.width = '0%';
+    document.body.appendChild(scrollProgress);
+
+    window.addEventListener('scroll', () => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / scrollHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
+    });
+
+    console.log('🎉 포트폴리오 초기화 완료!');
+
+    // 이미지 슬라이더 기능
+    document.querySelectorAll('.image-slider').forEach(slider => {
+        const container = slider.querySelector('.slider-container');
+        const prevBtn = slider.querySelector('.slider-prev');
+        const nextBtn = slider.querySelector('.slider-next');
+        const dots = slider.querySelectorAll('.slider-dots button');
+        let currentSlide = 0;
+        const slideCount = container.children.length;
+
+        function updateSlider() {
+            container.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+
+        // 자동 슬라이드 (선택사항)
+        let slideInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        }, 5000);
+
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            }, 5000);
+        });
+    });
+</script>
+</body>
+</div>
+
+</div>
+</div>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-4">연락하기</h2>
+        <p class="text-gray-600 text-lg mb-12">새로운 기회와 협업을 기다리고 있습니다</p>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="p-6 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors">
+                <div class="text-3xl mb-4">📧</div>
+                <h3 class="font-bold mb-2">이메일</h3>
+                <a href="mailto:go714n@naver.com" class="text-primary hover:text-primary/80">
+                    go714n@naver.com
+                </a>
+            </div>
+            <div class="p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors">
+                <div class="text-3xl mb-4">📱</div>
+                <h3 class="font-bold mb-2">연락처</h3>
+                <a href="tel:010-3540-3372" class="text-accent hover:text-accent/80">
+                    010-3540-3372
+                </a>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                <div class="text-3xl mb-4">💼</div>
+                <h3 class="font-bold mb-2">GitHub</h3>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    github.com/Gdm0714
+                </a>
+            </div>
+        </div>
+
+        <div class="flex justify-center space-x-6">
+            <a href="https://github.com/Gdm0714"
+               class="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/gdmin/"
+               class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/sma11__44?igsh=MTZrdml2aXU0dmdudw%3D%3D&utm_source=qr"
+               class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">고동민</h3>
+                <p class="text-gray-300 mb-4">
+                    공유의 가치를 믿는 백엔드 개발자입니다.<br>
+                    새로운 도전과 학습을 즐깁니다.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">주요 기술</h4>
+                <ul class="text-gray-300 space-y-2">
+                    <li>Java & Spring Boot</li>
+                    <li>TypeScript & NestJS</li>
+                    <li>PostgreSQL & MySQL</li>
+                    <li>AWS & Docker</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                <div class="text-gray-300 space-y-2">
+                    <div>📧 go714n@naver.com</div>
+                    <div>📱 010-3540-3372</div>
+                    <div>🔗 GitHub</div>
+                    <div>📝 티스토리 블로그</div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 고동민. All rights reserved. | 포트폴리오 웹사이트</p>
+        </div>
+    </div>
+</footer>
