@@ -245,7 +245,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white scroll-mt-36 pt-8">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">About Me</h2>
@@ -254,14 +254,8 @@
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="animate-slide-up">
-                    <h3 class="text-2xl font-bold mb-6">경력 및 교육</h3>
+                    <h3 class="text-2xl font-bold mb-6">교육</h3>
                     <div class="space-y-6">
-                        <div class="border-l-4 border-primary pl-6">
-                            <h4 class="text-lg font-semibold text-primary">한국전자통신연구원(ETRI)</h4>
-                            <p class="text-gray-600">사이버브레인연구실 | 연구연수생</p>
-                            <p class="text-sm text-gray-500">2023.07 ~ 2023.08</p>
-                            <p class="mt-2">자율·협업형 데이터 허브기술 개발</p>
-                        </div>
                         <div class="border-l-4 border-accent pl-6">
                             <h4 class="text-lg font-semibold text-accent">네이버 부스트캠프</h4>
                             <p class="text-gray-600">웹, 모바일 9기</p>
@@ -454,152 +448,81 @@
 
         <div class="space-y-16">
             <!-- Cloud Canvas Project -->
-            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-blue-100">
-                <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
-                    <!-- 이미지 슬라이더 영역 -->
-                    <div class="flex-1 flex items-center justify-center">
-                        <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-blue-100 to-indigo-100 p-2 w-full max-w-xl">
-                            <div class="slider-container flex transition-transform duration-500 ease-in-out">
-                                <img src="public/images/projects/cloud-canvas-1.png" alt="Cloud Canvas 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+1'">
-                                <img src="public/images/projects/cloud-canvas-2.png" alt="Cloud Canvas 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+2'">
-                                <img src="public/images/projects/cloud-canvas-3.png" alt="Cloud Canvas 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-blue-200" onerror="this.src='https://via.placeholder.com/800x400?text=Cloud+Canvas+3'">
-                            </div>
-                            <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                            </button>
-                            <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-                            <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                            </div>
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-blue-100 max-w-3xl mx-auto flex flex-col items-center">
+                <!-- 이미지 슬라이더: 상단 전체 -->
+                <div class="w-full mb-8">
+                    <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-blue-100 to-indigo-100 p-2 w-full" style="height:340px; max-width:100%;">
+                        <div class="slider-container flex transition-transform duration-500 ease-in-out h-full">
+                            <img src="public/images/projects/cloudcanvas1.png" alt="Cloud Canvas 1" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-blue-200">
+                            <img src="public/images/projects/cloudcanvas2.png" alt="Cloud Canvas 2" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-blue-200">
                         </div>
-                    </div>
-                    <!-- 텍스트/설명 영역 (통일 구조) -->
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <h3 class="text-4xl font-extrabold text-primary mr-4">Cloud Canvas</h3>
-                                <span class="bg-green-100 text-green-800 px-4 py-1 rounded-full text-base font-semibold">진행중</span>
-                            </div>
-                            <p class="text-gray-700 mb-6 text-lg font-medium">
-                                클라우드 인프라를 그래픽 인터페이스로 설계하고 Terraform 코드로 자동 변환하는 혁신적인 도구
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
-                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">NestJS</span>
-                                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
-                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
-                            </div>
-                            <ul class="space-y-2 mb-8">
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>Strategy & Factory 패턴으로 코드 수정량 40-70% 감소</li>
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>캐싱 메커니즘으로 성능 70% 향상 (10ms → 3ms)</li>
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>메모리 사용량 50% 감소, 캐시 히트율 85% 달성</li>
-                            </ul>
-                        </div>
-                        <div class="flex gap-4 mb-6">
-                            <a href="https://github.com/boostcampwm-2024/web37-cloud-canvas" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
-                            <a href="https://coding-study00.tistory.com/" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
-                        </div>
-                        <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
-                            <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
-                            <div class="grid grid-cols-2 gap-4 w-full">
-                                <div class="text-center p-4 bg-blue-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-blue-600">70%</div>
-                                    <div class="text-sm text-gray-600">성능 향상</div>
-                                </div>
-                                <div class="text-center p-4 bg-green-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-green-600">85%</div>
-                                    <div class="text-sm text-gray-600">캐시 히트율</div>
-                                </div>
-                                <div class="text-center p-4 bg-purple-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-purple-600">50%</div>
-                                    <div class="text-sm text-gray-600">메모리 절약</div>
-                                </div>
-                                <div class="text-center p-4 bg-orange-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-orange-600">4인</div>
-                                    <div class="text-sm text-gray-600">팀 개발</div>
-                                </div>
-                            </div>
+                        <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- ETRI 데이터 하베스팅 프로젝트 -->
-            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-purple-100">
-                <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
-                    <!-- 이미지 슬라이더 영역 -->
-                    <div class="flex-1 flex items-center justify-center">
-                        <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-indigo-100 to-purple-100 p-2 w-full max-w-xl">
-                            <div class="slider-container flex transition-transform duration-500 ease-in-out">
-                                <img src="public/images/projects/harvesting-1.png" alt="데이터 하베스팅 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-purple-200" onerror="this.src='https://via.placeholder.com/800x400?text=Harvesting+1'">
-                                <img src="public/images/projects/harvesting-2.png" alt="데이터 하베스팅 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-purple-200" onerror="this.src='https://via.placeholder.com/800x400?text=Harvesting+2'">
-                            </div>
-                            <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                            </button>
-                            <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-                            <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                                <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                            </div>
-                        </div>
+                <!-- 텍스트/설명: 이미지 아래 세로 정렬 -->
+                <div class="w-full flex flex-col items-center text-center">
+                     <div class="flex items-center mb-3 justify-center w-full">
+                         <h3 class="text-4xl font-extrabold text-primary mr-4">Cloud Canvas</h3>
+                         <span class="bg-green-100 text-green-800 px-4 py-1 rounded-full text-base font-semibold">진행중</span>
+                     </div>
+                    <p class="text-gray-700 mb-6 text-lg font-medium mx-auto">
+                        클라우드 인프라를 그래픽 인터페이스로 설계하고 Terraform 코드로 자동 변환하는 혁신적인 도구
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">NestJS</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
                     </div>
-                    <!-- 텍스트/설명 영역 (통일 구조) -->
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <h3 class="text-4xl font-extrabold text-purple-600 mr-4">데이터 하베스팅 시스템</h3>
-                                <span class="bg-purple-100 text-purple-800 px-4 py-1 rounded-full text-base font-semibold">완료</span>
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg mx-auto" style="max-width: 500px;">
+                        <h4 class="font-semibold text-blue-800 mb-2">기술 스택 선택 이유</h4>
+                        <ul class="text-sm text-blue-700 space-y-2">
+                            <li>• TypeScript: 정적 타입 지원으로 개발 시 발생할 수 있는 오류를 사전에 방지</li>
+                            <li>• NestJS: 모듈화된 구조와 의존성 주입으로 확장성 있는 아키텍처 구현</li>
+                            <li>• AWS S3: 안정적인 파일 저장소와 빠른 접근 속도 제공</li>
+                            <li>• MySQL: 트랜잭션 처리와 데이터 정합성 보장</li>
+                        </ul>
+                    </div>
+                    <ul class="space-y-2 mb-8 mx-auto" style="max-width: 500px;">
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>Strategy & Factory 패턴으로 코드 수정량 40-70% 감소</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>캐싱 메커니즘으로 성능 70% 향상 (10ms → 3ms)</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>메모리 사용량 50% 감소, 캐시 히트율 85% 달성</li>
+                    </ul>
+                    <div class="flex gap-4 mb-6 justify-center">
+                        <a href="https://github.com/boostcampwm-2024/web37-cloud-canvas" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
+                        <a href="https://coding-study00.tistory.com/" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
+                    </div>
+                    <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md mx-auto">
+                        <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
+                        <div class="grid grid-cols-2 gap-4 w-full">
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <div class="text-2xl font-bold text-blue-600">70%</div>
+                                <div class="text-sm text-gray-600">성능 향상</div>
                             </div>
-                            <p class="text-gray-700 mb-6 text-lg font-medium">자율·협업형 데이터 허브기술 개발 - 다양한 소스로부터 데이터를 자동으로 수집, 추출하고 저장하는 시스템</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Java 17</span>
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot 3</span>
-                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">PostgreSQL 16</span>
-                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">MyBatis 2.3.0</span>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl font-bold text-green-600">85%</div>
+                                <div class="text-sm text-gray-600">캐시 히트율</div>
                             </div>
-                            <ul class="space-y-2 mb-8">
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>데이터 수집 소스 관리 시스템 구현</li>
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>하베스팅 작업 생성, 실행, 모니터링 기능 개발</li>
-                                <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>다단계 승인 프로세스 및 작업 충돌 방지 로직 설계</li>
-                            </ul>
-                        </div>
-                        <div class="flex gap-4 mb-6">
-                            <a href="#" class="bg-purple-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-purple-600 transition-colors">ETRI 소개</a>
-                        </div>
-                        <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
-                            <h4 class="font-bold text-xl mb-4 text-center">주요 성과</h4>
-                            <div class="grid grid-cols-2 gap-4 w-full">
-                                <div class="text-center p-4 bg-indigo-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-indigo-600">100%</div>
-                                    <div class="text-sm text-gray-600">작업 충돌 방지</div>
-                                </div>
-                                <div class="text-center p-4 bg-purple-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-purple-600">5단계</div>
-                                    <div class="text-sm text-gray-600">승인 프로세스</div>
-                                </div>
-                                <div class="text-center p-4 bg-green-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-green-600">24/7</div>
-                                    <div class="text-sm text-gray-600">자동화 수집</div>
-                                </div>
-                                <div class="text-center p-4 bg-orange-50 rounded-lg">
-                                    <div class="text-2xl font-bold text-orange-600">100%</div>
-                                    <div class="text-sm text-gray-600">데이터 정합성</div>
-                                </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <div class="text-2xl font-bold text-purple-600">50%</div>
+                                <div class="text-sm text-gray-600">메모리 절약</div>
+                            </div>
+                            <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                <div class="text-2xl font-bold text-orange-600">4인</div>
+                                <div class="text-sm text-gray-600">팀 개발</div>
                             </div>
                         </div>
                     </div>
@@ -607,159 +530,207 @@
             </div>
 
             <!-- 인제 레시피 Project -->
-            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-orange-100">
-              <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
-                <!-- 이미지 슬라이더 영역 -->
-                <div class="flex-1 flex items-center justify-center">
-                  <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-orange-100 to-red-100 p-2 w-full max-w-xl">
-                    <div class="slider-container flex transition-transform duration-500 ease-in-out">
-                      <img src="public/images/projects/injerecipe-1.png" alt="인제 레시피 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+1'">
-                      <img src="public/images/projects/injerecipe-2.png" alt="인제 레시피 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+2'">
-                      <img src="public/images/projects/injerecipe-3.png" alt="인제 레시피 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-orange-200" onerror="this.src='https://via.placeholder.com/800x400?text=InjeRecipe+3'">
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-orange-100 max-w-3xl mx-auto flex flex-col items-center">
+                <!-- 이미지 슬라이더: 상단 전체 -->
+                <div class="w-full mb-8">
+                    <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-orange-100 to-red-100 p-2 w-full" style="height:340px; max-width:100%;">
+                        <div class="slider-container flex transition-transform duration-500 ease-in-out h-full">
+                            <img src="public/images/projects/injerecipe.png" alt="인제 레시피 1" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-orange-200">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                        </div>
                     </div>
-                    <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                    <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                    </div>
-                  </div>
                 </div>
-                <!-- 텍스트/설명 영역 (통일 구조) -->
-                <div class="flex-1 flex flex-col justify-between">
-                  <div>
-                    <div class="flex items-center mb-3">
-                      <h3 class="text-4xl font-extrabold text-orange-500 mr-4">인제 레시피</h3>
-                      <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-base font-semibold">완료</span>
+                <!-- 텍스트/설명: 이미지 아래 세로 정렬 -->
+                <div class="w-full flex flex-col items-center text-center">
+                    <div class="flex items-center mb-3 justify-center w-full">
+                        <h3 class="text-4xl font-extrabold text-orange-500 mr-4">인제 레시피</h3>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-base font-semibold">완료</span>
                     </div>
-                    <p class="text-gray-700 mb-6 text-lg font-medium">사용자가 입력한 재료를 기반으로 요리 레시피를 추천하는 앱</p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                      <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Java</span>
-                      <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
-                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">PostgreSQL</span>
-                      <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
-                      <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">OAuth2</span>
-                      <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">JWT</span>
+                    <p class="text-gray-700 mb-6 text-lg font-medium mx-auto">사용자가 입력한 재료를 기반으로 요리 레시피를 추천하는 앱</p>
+                    <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Java</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">PostgreSQL</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">AWS S3</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">OAuth2</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-semibold">JWT</span>
                     </div>
-                    <ul class="space-y-2 mb-8">
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>UUID 기반 파일명으로 이미지 충돌 가능성 0%로 감소</li>
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>검색 성공률 45% → 95%로 향상</li>
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>DB 쿼리 수 80% 감소 (5회 → 1회)</li>
+                    <div class="mb-6 p-4 bg-orange-50 rounded-lg mx-auto" style="max-width: 500px;">
+                        <h4 class="font-semibold text-orange-800 mb-2">기술 스택 선택 이유</h4>
+                        <ul class="text-sm text-orange-700 space-y-2">
+                            <li>• Spring Boot: 빠른 개발과 RESTful API 구현 용이</li>
+                            <li>• PostgreSQL: 이미지 메타데이터 저장과 검색 최적화</li>
+                            <li>• AWS S3: 이미지 저장소로의 안정적인 확장성</li>
+                            <li>• OAuth2 & JWT: 안전한 사용자 인증과 세션 관리</li>
+                        </ul>
+                    </div>
+                    <ul class="space-y-2 mb-8 mx-auto" style="max-width: 500px;">
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>UUID 기반 파일명으로 이미지 충돌 가능성 0%로 감소</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>검색 성공률 45% → 95%로 향상</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>DB 쿼리 수 80% 감소 (5회 → 1회)</li>
                     </ul>
-                  </div>
-                  <div class="flex gap-4 mb-6">
-                    <a href="https://github.com/InjeRecipe/InjeRecipe_BackEnd" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
-                    <a href="#" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
-                  </div>
-                  <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
-                    <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
-                    <div class="grid grid-cols-2 gap-4 w-full">
-                      <div class="text-center p-4 bg-green-50 rounded-lg">
-                        <div class="text-2xl font-bold text-green-600">95%</div>
-                        <div class="text-sm text-gray-600">검색 성공률</div>
-                      </div>
-                      <div class="text-center p-4 bg-blue-50 rounded-lg">
-                        <div class="text-2xl font-bold text-blue-600">-80%</div>
-                        <div class="text-sm text-gray-600">DB 쿼리 감소</div>
-                      </div>
-                      <div class="text-center p-4 bg-purple-50 rounded-lg">
-                        <div class="text-2xl font-bold text-purple-600">0%</div>
-                        <div class="text-sm text-gray-600">이미지 충돌</div>
-                      </div>
-                      <div class="text-center p-4 bg-orange-50 rounded-lg">
-                        <div class="text-2xl font-bold text-orange-600">완료</div>
-                        <div class="text-sm text-gray-600">프로젝트 상태</div>
-                      </div>
+                    <div class="flex gap-4 mb-6 justify-center">
+                        <a href="https://github.com/InjeRecipe/InjeRecipe_BackEnd" class="bg-orange-500 text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-600 transition-colors">GitHub</a>
+                        <a href="#" class="border-2 border-orange-500 text-orange-500 px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-orange-500 hover:text-white transition-colors">기술 블로그</a>
                     </div>
-                  </div>
+                    <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md mx-auto">
+                        <h4 class="font-bold text-xl mb-4 text-center">최적화 성과</h4>
+                        <div class="grid grid-cols-2 gap-4 w-full">
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl font-bold text-green-600">95%</div>
+                                <div class="text-sm text-gray-600">검색 성공률</div>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <div class="text-2xl font-bold text-blue-600">-80%</div>
+                                <div class="text-sm text-gray-600">DB 쿼리 감소</div>
+                            </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <div class="text-2xl font-bold text-purple-600">0%</div>
+                                <div class="text-sm text-gray-600">이미지 충돌</div>
+                            </div>
+                            <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                <div class="text-2xl font-bold text-orange-600">완료</div>
+                                <div class="text-sm text-gray-600">프로젝트 상태</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
 
             <!-- 동네왔수다 Project -->
-            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-emerald-100">
-              <div class="flex flex-col md:flex-row gap-10 items-center md:items-stretch">
-                <!-- 이미지 슬라이더 영역 -->
-                <div class="flex-1 flex items-center justify-center">
-                  <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-green-100 to-emerald-100 p-2 w-full max-w-xl">
-                    <div class="slider-container flex transition-transform duration-500 ease-in-out">
-                      <img src="public/images/projects/overtime-1.png" alt="동네왔수다 1" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+1'">
-                      <img src="public/images/projects/overtime-2.png" alt="동네왔수다 2" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+2'">
-                      <img src="public/images/projects/overtime-3.png" alt="동네왔수다 3" class="w-full h-64 md:h-72 object-cover flex-shrink-0 rounded-xl border border-emerald-200" onerror="this.src='https://via.placeholder.com/800x400?text=OverTime+3'">
+            <div class="project-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-emerald-100 max-w-3xl mx-auto flex flex-col items-center">
+                <!-- 이미지 슬라이더: 상단 전체 -->
+                <div class="w-full mb-8">
+                    <div class="image-slider relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-green-100 to-emerald-100 p-2 w-full" style="height:340px; max-width:100%;">
+                        <div class="slider-container flex transition-transform duration-500 ease-in-out h-full">
+                            <img src="public/images/projects/team_야근수당-01.png" alt="동네왔수다 1" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-02.png" alt="동네왔수다 2" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-03.png" alt="동네왔수다 3" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-04.png" alt="동네왔수다 4" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-05.png" alt="동네왔수다 5" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-06.png" alt="동네왔수다 6" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-07.png" alt="동네왔수다 7" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-08.png" alt="동네왔수다 8" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-09.png" alt="동네왔수다 9" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-10.png" alt="동네왔수다 10" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-11.png" alt="동네왔수다 11" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                            <img src="public/images/projects/team_야근수당-12.png" alt="동네왔수다 12" class="w-full h-full object-cover flex-shrink-0 rounded-xl border border-emerald-200">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
+                        </div>
                     </div>
-                    <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                    <div class="slider-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                      <button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-                    </div>
-                  </div>
                 </div>
-                <!-- 텍스트/설명 영역 (통일 구조) -->
-                <div class="flex-1 flex flex-col justify-between">
-                  <div>
-                    <div class="flex items-center mb-3">
-                      <h3 class="text-4xl font-extrabold text-accent mr-4">동네왔수다</h3>
-                      <span class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-base font-semibold">1등 수상</span>
+                <!-- 텍스트/설명: 이미지 아래 세로 정렬 -->
+                <div class="w-full flex flex-col items-center text-center">
+                    <div class="flex items-center mb-3 justify-center w-full">
+                        <h3 class="text-4xl font-extrabold text-accent mr-4">동네왔수다</h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-base font-semibold">1등 수상</span>
                     </div>
-                    <p class="text-gray-700 mb-6 text-lg font-medium">위치 기반 오디오 가이드 서비스로 사용자가 특정 장소에서 음성 콘텐츠를 들을 수 있는 플랫폼</p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                      <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
-                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">JPA</span>
-                      <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
-                      <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">GitHub Actions</span>
+                    <p class="text-gray-700 mb-6 text-lg font-medium mx-auto">위치 기반 오디오 가이드 서비스로 사용자가 특정 장소에서 음성 콘텐츠를 들을 수 있는 플랫폼</p>
+                    <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Spring Boot</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">JPA</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">GitHub Actions</span>
                     </div>
-                    <ul class="space-y-2 mb-8">
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>완전 자동화된 CI/CD 파이프라인 구축</li>
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>위치 기반 마커 및 콘텐츠 관리 시스템</li>
-                      <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>관리자용 콘텐츠 관리 API 개발</li>
+                    <div class="mb-6 p-4 bg-emerald-50 rounded-lg mx-auto" style="max-width: 500px;">
+                        <h4 class="font-semibold text-emerald-800 mb-2">기술 스택 선택 이유</h4>
+                        <ul class="text-sm text-emerald-700 space-y-2">
+                            <li>• Spring Boot: 빠른 개발과 안정적인 서비스 제공</li>
+                            <li>• JPA: 객체지향적인 데이터 접근과 유지보수성 향상</li>
+                            <li>• MySQL: 위치 기반 데이터의 효율적인 저장과 조회</li>
+                            <li>• GitHub Actions: 자동화된 배포와 품질 관리</li>
+                        </ul>
+                    </div>
+                    <ul class="space-y-2 mb-8 mx-auto" style="max-width: 500px;">
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>완전 자동화된 CI/CD 파이프라인 구축</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>위치 기반 마커 및 콘텐츠 관리 시스템</li>
+                        <li class="flex items-center text-base"><span class="text-green-500 mr-2">✓</span>관리자용 콘텐츠 관리 API 개발</li>
                     </ul>
-                  </div>
-                  <div class="flex gap-4 mb-6">
-                    <a href="https://github.com/dnd-over-time/over-time-server" class="bg-accent text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent/90 transition-colors">GitHub</a>
-                    <a href="#" class="border-2 border-accent text-accent px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent hover:text-white transition-colors">프로젝트 상세</a>
-                  </div>
-                  <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md">
-                    <h4 class="font-bold text-xl mb-4 text-center">DND 해커톤 성과</h4>
-                    <div class="grid grid-cols-2 gap-4 w-full">
-                      <div class="text-center p-4 bg-yellow-50 rounded-lg">
-                        <div class="text-2xl font-bold text-yellow-600">🏆</div>
-                        <div class="text-sm text-gray-600">1등 수상</div>
-                      </div>
-                      <div class="text-center p-4 bg-green-50 rounded-lg">
-                        <div class="text-2xl font-bold text-green-600">CI/CD</div>
-                        <div class="text-sm text-gray-600">자동화</div>
-                      </div>
-                      <div class="text-center p-4 bg-blue-50 rounded-lg">
-                        <div class="text-2xl font-bold text-blue-600">위치</div>
-                        <div class="text-sm text-gray-600">기반 서비스</div>
-                      </div>
-                      <div class="text-center p-4 bg-purple-50 rounded-lg">
-                        <div class="text-2xl font-bold text-purple-600">API</div>
-                        <div class="text-sm text-gray-600">관리자 시스템</div>
-                      </div>
+                    <div class="flex gap-4 mb-6 justify-center">
+                        <a href="https://github.com/dnd-over-time/over-time-server" class="bg-accent text-white px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent/90 transition-colors">GitHub</a>
+                        <a href="#" class="border-2 border-accent text-accent px-7 py-3 rounded-xl font-bold text-base shadow hover:bg-accent hover:text-white transition-colors">프로젝트 상세</a>
                     </div>
-                  </div>
+                    <div class="bg-white/80 p-6 rounded-2xl shadow flex flex-col items-center w-full max-w-md mx-auto">
+                        <h4 class="font-bold text-xl mb-4 text-center">DND 해커톤 성과</h4>
+                        <div class="grid grid-cols-2 gap-4 w-full">
+                            <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                                <div class="text-2xl font-bold text-yellow-600">🏆</div>
+                                <div class="text-sm text-gray-600">1등 수상</div>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl font-bold text-green-600">CI/CD</div>
+                                <div class="text-sm text-gray-600">자동화</div>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <div class="text-2xl font-bold text-blue-600">위치</div>
+                                <div class="text-sm text-gray-600">기반 서비스</div>
+                            </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <div class="text-2xl font-bold text-purple-600">API</div>
+                                <div class="text-sm text-gray-600">관리자 시스템</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Career Section -->
+<section id="career" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-10 text-center">경력사항</h2>
+        <div class="bg-white/90 p-8 rounded-3xl shadow-2xl border-l-8 border-purple-300 mb-8">
+            <div class="mb-2 text-2xl font-bold text-purple-700">한국전자통신연구원(ETRI) <span class="text-base text-gray-500 font-normal">2023.07 ~ 2023.08</span></div>
+            <div class="mb-4 text-xl font-semibold text-purple-500">데이터 하베스팅 시스템 개발</div>
+            <div class="mb-4">
+                <span class="font-bold text-gray-700">수행 업무</span>
+                <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1 text-base">
+                    <li>데이터 수집 소스 관리 시스템 구현</li>
+                    <li>하베스팅 작업 생성, 실행, 모니터링 기능 개발</li>
+                    <li>다단계 승인 프로세스 및 작업 충돌 방지 로직 설계</li>
+                    <li>PostgreSQL, MyBatis 기반 데이터 저장 및 관리</li>
+                </ul>
+            </div>
+            <div class="mb-4">
+                <span class="font-bold text-gray-700">주요 성과</span>
+                <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1 text-base">
+                    <li>작업 충돌 방지 100% 달성, 데이터 정합성 100% 유지</li>
+                    <li>5단계 승인 프로세스 설계 및 자동화 수집 시스템 구축</li>
+                </ul>
+            </div>
+            <div>
+                <span class="font-bold text-gray-700">Skill</span>
+                <div class="mt-2 text-sm text-gray-600">Java 17 / Spring Boot 3 / PostgreSQL 16 / MyBatis 2.3.0</div>
             </div>
         </div>
     </div>
