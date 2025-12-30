@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: process.env.NODE_ENV === 'production' ? '/dongmin-portfolio' : '',
+    output: 'export',
     images: {
         unoptimized: true
     },
-    trailingSlash: true,
-    experimental: {
-        esmExternals: 'loose'
-    }
+    trailingSlash: true
 };
 
 module.exports = nextConfig;
