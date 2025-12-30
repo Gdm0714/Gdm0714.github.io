@@ -155,11 +155,22 @@ const Portfolio = () => {
                                 <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800">
                                     <div className="flex items-center gap-2 mb-3">
                                         <Cloud className="text-purple-400" size={18} />
+                                        <span className="font-medium text-gray-300">AI / ML</span>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {['Python', 'FastAPI', 'LangChain', 'RAG', 'Chroma DB', 'Ollama'].map((tech) => (
+                                            <span key={tech} className="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-lg text-sm border border-purple-500/20">{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <Cloud className="text-orange-400" size={18} />
                                         <span className="font-medium text-gray-300">Infrastructure & Others</span>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
                                         {['AWS S3', 'Terraform', 'Flutter', 'OAuth2.0'].map((tech) => (
-                                            <span key={tech} className="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-lg text-sm border border-purple-500/20">{tech}</span>
+                                            <span key={tech} className="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-lg text-sm border border-orange-500/20">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -217,10 +228,42 @@ const Portfolio = () => {
                                 </div>
                             </div>
                             
-                            <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2">
                                 {['Java 11', 'Spring Boot 3', 'PostgreSQL 16', 'MyBatis'].map((tech) => (
                                     <span key={tech} className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-lg text-sm">{tech}</span>
                                 ))}
+                            </div>
+                            
+                            {/* 약물 알레르기 RAG 시스템 */}
+                            <div className="mt-8 pt-8 border-t border-gray-700">
+                                <div className="flex flex-col md:flex-row justify-between items-start mb-4">
+                                    <div>
+                                        <h4 className="text-lg font-semibold text-cyan-400 mb-2">약물 알레르기 RAG 시스템</h4>
+                                        <p className="text-gray-400">&apos;나의건강기록&apos; 앱 연동을 위한 약물 알레르기 교차반응 정보 요약 API | 백엔드 개발</p>
+                                    </div>
+                                    <span className="text-gray-500 text-sm mt-2 md:mt-0 flex items-center gap-1">
+                                        <Calendar size={14} />
+                                        2025.10 ~ 현재
+                                    </span>
+                                </div>
+                                
+                                <div className="space-y-4">
+                                    <div className="p-4 bg-gray-900/50 rounded-xl">
+                                        <h5 className="text-white font-medium mb-3">구현 내용</h5>
+                                        <ul className="text-sm text-gray-400 space-y-2">
+                                            <li>• 약품 교차반응표 <span className="text-cyan-400 font-semibold">벡터 인덱싱</span> 및 <span className="text-cyan-400 font-semibold">유사도 검색</span> 구현</li>
+                                            <li>• 환자 보고서 데이터 기반 <span className="text-cyan-400 font-semibold">교차반응 주의 약물 요약 생성</span></li>
+                                            <li>• PHR DB(병원 시스템 DB) 적재 규격 준수</li>
+                                            <li>• 4개 병원 테스트 데이터(<span className="text-green-400 font-semibold">4,630건</span>) 배치 처리 검증</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex flex-wrap gap-2 mt-4">
+                                    {['Python 3.12', 'FastAPI', 'LangChain', 'Ollama(Qwen3)', 'Chroma DB', 'RAG'].map((tech) => (
+                                        <span key={tech} className="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-lg text-sm border border-cyan-500/20">{tech}</span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
